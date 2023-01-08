@@ -5,7 +5,7 @@ import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems, getIsLoading, getError } from 'redux/selectors';
-import { fetchContacts } from 'api/api';
+import { fetchContacts } from 'redux/contacts/contactsApi';
 
 import css from './App.module.css';
 
