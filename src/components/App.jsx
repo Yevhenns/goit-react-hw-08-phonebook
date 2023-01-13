@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { Contacts } from 'pages/Contacts';
+import { ContactsPage } from 'pages/Contacts';
 import { Registration } from 'pages/Registration';
 import { NotFound } from 'pages/NotFound';
 import { Login } from 'pages/Login';
@@ -47,7 +47,7 @@ export const App = () => {
             <Route
               path="/contacts"
               element={
-                <PrivateRoute redirectTo="/login" component={<Contacts />} />
+                <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
               }
             />
           </Route>

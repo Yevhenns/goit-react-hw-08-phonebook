@@ -1,5 +1,5 @@
-import { getIsLoadingLogin, getUserName } from 'redux/auth/authSelectors';
-import { logOut } from 'redux/auth/authOperations';
+import { getIsLoadingLogin, getUserName } from 'redux/selectors';
+import { logOut } from 'redux/auth/authApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
