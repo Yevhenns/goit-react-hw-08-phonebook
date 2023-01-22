@@ -8,7 +8,7 @@ import { GlobalStyle } from 'components/GlobalStyles';
 import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchCurrentUser } from 'redux/auth/authApi';
+import { refreshUser } from 'redux/auth/authApi';
 import { PrivateRoute } from 'PrivateRoute';
 import { RestrictedRoute } from 'RestrictedRoute';
 import { ToastContainer } from 'react-toastify';
@@ -18,7 +18,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCurrentUser());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from 'redux/auth/authApi';
+import { signup } from 'redux/auth/authApi';
 import { getIsLoadingLogin } from 'redux/auth/authSelectors';
 import {
   TextField,
@@ -32,7 +32,7 @@ export const RegisterForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
+    dispatch(signup({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
