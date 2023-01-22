@@ -1,7 +1,11 @@
-import { Form } from 'components/Form/Form';
+import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
-import { Contacts } from 'components/Contacts/Contacts';
-import { getItems, getIsLoading, getError } from 'redux/selectors';
+import { ContactList } from 'components/ContactList/ContactList';
+import {
+  getContactsArray,
+  getIsLoading,
+  getError,
+} from 'redux/contacts/contactsSelectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/contactsApi';
@@ -13,9 +17,9 @@ import {
   Box,
 } from '@mui/material';
 
-export const ContactsPage = () => {
+export const Contacts = () => {
   const dispatch = useDispatch();
-  const array = useSelector(getItems);
+  const array = useSelector(getContactsArray);
   const loading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
@@ -32,7 +36,7 @@ export const ContactsPage = () => {
           <Typography align="center" variant="h6" marginBottom={3}>
             Add new contact
           </Typography>
-          <Form />
+          <ContactForm />
           <Typography align="center" variant="h6" margin={3}>
             All your contacts
           </Typography>
@@ -55,7 +59,7 @@ export const ContactsPage = () => {
             <>
               <Stack spacing={2}>
                 <Filter />
-                <Contacts />
+                <ContactList />
               </Stack>
             </>
           )}

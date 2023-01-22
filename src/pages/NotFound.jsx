@@ -19,7 +19,7 @@ export const NotFound = () => {
       }}
     >
       <Stack spacing={2}>
-        <p>Not found</p>
+        <p>Page not found!</p>
         <Box
           sx={{
             display: 'flex',

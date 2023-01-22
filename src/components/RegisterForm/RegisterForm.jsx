@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/authApi';
-import { getIsLoadingLogin } from 'redux/selectors';
+import { getIsLoadingLogin } from 'redux/auth/authSelectors';
 import {
   TextField,
   Button,
@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 
-export const RegistrationForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
   const loading = useSelector(getIsLoadingLogin);
   const [name, setName] = useState('');

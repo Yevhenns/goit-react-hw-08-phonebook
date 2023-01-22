@@ -1,4 +1,4 @@
-import { getIsLoadingLogin, getUserName } from 'redux/selectors';
+import { getIsLoadingLogin, getUserName } from 'redux/auth/authSelectors';
 import { logOut } from 'redux/auth/authApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';

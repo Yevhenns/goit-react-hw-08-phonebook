@@ -1,28 +1,27 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
-import { setFilter } from 'redux/filterSlice';
-
-import css from './styles.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { getContactsFilter } from 'redux/contacts/contactsSelectors';
+import { setFilter } from 'redux/filter/filterSlice';
+import { TextField } from '@mui/material';
 
 export const Filter = () => {
-  const filterName = useSelector(getFilter);
+  const filterName = useSelector(getContactsFilter);
   const dispatch = useDispatch();
 
   const changeFilter = e => {
-    dispatch(setFilter(e.currentTarget.value.toLowerCase()));
+    let searchName = e.target.value;
+    dispatch(setFilter(searchName.toLowerCase()));
   };
-  
+
   return (
-    <div className={css.filterContainer}>
-      <label htmlFor="find">Find contacts by name</label>
-      <input
-        id="find"
-        type="text"
-        value={filterName}
-        onChange={changeFilter}
-        placeholder="Boris Johnsoniuk"
-      />
-    </div>
+    <TextField
+      label="Search"
+      type="text"
+      value={filterName}
+      onChange={changeFilter}
+      placeholder="Name..."
+      variant="outlined"
+      size="small"
+      fullWidth
+    />
   );
 };

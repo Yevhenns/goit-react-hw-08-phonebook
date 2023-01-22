@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/authApi';
-import { getIsLoadingLogin } from 'redux/selectors';
+import { getIsLoadingLogin } from 'redux/auth/authSelectors';
 import {
   TextField,
   Button,

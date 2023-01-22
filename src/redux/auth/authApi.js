@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -20,6 +21,7 @@ export const register = createAsyncThunk(
       token.set(response.data.token);
       return response.data;
     } catch (e) {
+      toast.error('Something wrong! Please try again!');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -33,6 +35,7 @@ export const logIn = createAsyncThunk(
       token.set(response.data.token);
       return response.data;
     } catch (e) {
+      toast.error('Invalid login or password! Please try again!');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -43,6 +46,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/users/logout');
     token.unset();
   } catch (e) {
+    toast.info('Something wrong! Please try again!');
     return thunkAPI.rejectWithValue(e.message);
   }
 });
@@ -54,6 +58,7 @@ export const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
+      // console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
 
@@ -62,6 +67,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (e) {
+      toast.info('Something wrong! Please try again!');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
