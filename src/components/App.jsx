@@ -1,20 +1,18 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { ContactsPage } from 'pages/Contacts';
-import { Registration } from 'pages/Registration';
+import { Contacts } from 'pages/Contacts';
+import { Register } from 'pages/Register';
 import { NotFound } from 'pages/NotFound';
 import { Login } from 'pages/Login';
 import { Navigation } from './Navigation/Navigation';
-import { GlobalStyle } from 'components/GlobalStyles';
+import { GlobalStyle } from 'components/Utilit/GlobalStyle';
 import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchCurrentUser } from 'redux/auth/authApi';
-import { PrivateRoute } from '../Routes/PrivateRoute';
-import { RestrictedRoute } from '../Routes/RestrictedRoute';
+import { fetchCurrentUser } from 'redux/auth/authOperations';
+import { PrivateRoute } from 'PrivateRoute';
+import { RestrictedRoute } from 'RestrictedRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import css from './App.module.css';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -34,7 +32,7 @@ export const App = () => {
               element={
                 <RestrictedRoute
                   redirectTo="/contacts"
-                  component={<Registration />}
+                  component={<Register />}
                 />
               }
             />
@@ -47,7 +45,7 @@ export const App = () => {
             <Route
               path="/contacts"
               element={
-                <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+                <PrivateRoute redirectTo="/login" component={<Contacts />} />
               }
             />
           </Route>
